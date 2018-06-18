@@ -1,0 +1,50 @@
+ int vAciertos[]= new int[6];
+      String vResultado[]= new String[6];
+      int cant_aciertos;
+      String aCarton = "CARTONES_" + txtSorteo.getText()+ ".txt";
+      String aResultados = "RESULTADOS_" + txtSorteo.getText()+ ".txt";
+      System.out.println(aCarton);
+      System.out.println(aResultados);
+      
+      try {
+         BufferedReader rbr = new BufferedReader(new FileReader(aResultados));
+         String rlinea="";
+         rlinea = rbr.readLine();
+          while(rlinea!=null) {
+             vResultado = rlinea.split(",");
+             rlinea = rbr.readLine();
+          }
+          rbr.close();
+          System.out.println("Cargo Vectorresultado"); 
+         BufferedReader cbr = new BufferedReader(new FileReader(aCarton));
+         String clinea="";
+         clinea = cbr.readLine();
+          while(clinea!=null) {
+             String vCarton[] = clinea.split(",");
+             int i=0;
+             int j=0;
+             cant_aciertos=0;
+             for(i=1;  i < vCarton.length;i++){
+                for(j=0; j < vResultado.length ;j++){
+                  if (vCarton[i].equals(vResultado[j])==true) {
+                     cant_aciertos ++;
+                     System.out.println("Cargo cant_aciertos"); 
+                  }
+                }
+             }
+            vAciertos[cant_aciertos] = vAciertos[cant_aciertos] ++;
+            clinea = cbr.readLine();
+         }
+         cbr.close();
+              
+          }
+      
+      catch(IOException ex) {
+          System.out.println(ex.getMessage());
+      }
+      
+      for(int i=1; i<7;i++){
+	System.out.println(String.valueOf(vAciertos[i]));
+      }  
+            
+       

@@ -1,0 +1,83 @@
+
+Sentencias
+
+### Ingresar desde teclado
+Scanner teclado = new Scanner(System.in);
+System.out.print("INGRESE VALOR ");
+int v1 = teclado.nextInt();
+
+
+### Imprimir por pantalla
+System.out.print("");
+System.out.println("");
+
+
+## IF
+ if(v1 > 10) {
+   	System.out.println("EL VALOR INGRESADO ES MAYOR A 10");
+}else {
+        System.out.println("EL VALOR INGRESADO ES MENOR O IGUAL A 10");
+}
+
+
+## Switch
+ switch(v1) {
+     case 1:
+        System.out.println("USTED INGRESO 1");
+        break;
+     case 2:
+        System.out.println("USTED INGRESO 2");
+        break;
+     default:
+        System.out.println("USTED NO INGRESO 1 Y TAMPOCO 2");
+        break;
+ }
+
+
+## WHILE
+while (i<21) {
+      System.out.print(i + " ");
+      i++;
+}
+
+
+## DO WHILE
+do {
+     System.out.print(i + " ");
+     i++;
+   } while(i<31);
+
+
+## FOR
+ for(i=100;i>=10;i-=10) {
+       System.out.print(i + " ");
+}
+
+
+
+### LEER ARCHIVO DE TEXTO
+import java.io.*;
+
+private String buscarPais(String pais) {
+      String capital = "";
+      try {
+         BufferedReader br = new BufferedReader(new FileReader("PAISES.csv"));
+         String linea="";
+         linea = br.readLine();
+          while(linea!=null) {
+             String vector[] = linea.split(",");
+             if(vector[0].equals(pais)==true) {
+                 capital = vector[1];
+                 break;
+              }
+               
+              linea = br.readLine();
+          }
+            
+         br.close();
+      }catch(IOException ex) {
+          System.out.println(ex.getMessage());
+      }
+        
+      return capital;
+  }
